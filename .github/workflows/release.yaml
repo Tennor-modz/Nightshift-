@@ -1,0 +1,64 @@
+name: Release
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn tsc
+      - run: yarn build:production
+      - name: create release branch and bump version
+        env:
+          VERSION: ${{ github.ref_name }}
+        run: |
+          BRANCH=release/${{ env.VERSION }}
+          git config --local user.email 'ci@pterodactyl.io'
+          git config --local user.name 'Pterodactyl CI'
+          git checkout -b "$BRANCH"
+          git push -u origin "$BRANCH"
+          sed -i "s/'canary'/'${VERSION:1}'/" config/app.php
+          git add config/app.php
+          git commit -m 'ci(release): bump version'
+          git push
+      - name: create release archive
+        run: |
+          rm -rf node_modules tests CONTRIBUTING.md flake.lock flake.nix phpunit.xml shell.nix
+          tar -czf panel.tar.gz * .editorconfig .env.example .eslintignore .eslintrc.js .gitignore .prettierrc.json
+      - name: write changelog
+        run: |
+          sed -n "/^## ${{ github.ref_name }}/,/^## /{/^## /b;p}" CHANGELOG.md > ./RELEASE_CHANGELOG
+      - uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: true
+          prerelease: ${{ contains(github.ref_name, 'rc') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') }}
+          body_path: ./RELEASE_CHANGELOG
+          files: |
+            panel.tar.gz
+
+      # Hand the tagged version to pterodactyl/pterodactyl-cdn, which publishes
+      # https://cdn.pterodactyl.io/releases/latest.json. It can't read the
+      # version off the API itself, because the release above is still a draft.
+      # GITHUB_TOKEN deliberately cannot be used here: it has no access to
+      # another repository.
+      - name: Update CDN release manifest
+        if: ${{ !contains(github.ref_name, 'rc') && !contains(github.ref_name, 'beta') && !contains(github.ref_name, 'alpha') }}
+        env:
+          GH_TOKEN: ${{ secrets.CDN_DISPATCH_TOKEN }}
+          VERSION: ${{ github.ref_name }}
+        run: |
+          jq -n --arg version "$VERSION" \
+            '{event_type: "release-tagged", client_payload: {component: "panel", version: $version}}' \
+            | gh api repos/pterodactyl/pterodactyl-cdn/dispatches --input -
