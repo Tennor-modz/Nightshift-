@@ -7,6 +7,7 @@ import {
     faClock,
     faHdd,
     faMemory,
+    faMicrochip,
     faServer,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -86,8 +87,17 @@ export default ({ server, className }: { server: Server; className?: string }) =
         alarms.disk = isAlarmState(stats.diskUsageInBytes, server.limits.disk);
     }
 
-    const diskLimit = server.limits.disk !== 0 ? bytesToString(mbToBytes(server.limits.disk)) : 'Unlimited';
+    const diskLimitInBytes = server.limits.disk !== 0 ? mbToBytes(server.limits.disk) : 0;
+    const diskLimit = diskLimitInBytes > 0 ? bytesToString(diskLimitInBytes) : 'Unlimited';
+    const diskRemaining =
+        diskLimitInBytes > 0 && stats
+            ? bytesToString(Math.max(diskLimitInBytes - stats.diskUsageInBytes, 0))
+            : diskLimitInBytes > 0
+            ? '—'
+            : 'Unlimited';
     const memoryLimit = server.limits.memory !== 0 ? bytesToString(mbToBytes(server.limits.memory)) : 'Unlimited';
+    const coreLimit = server.limits.cpu !== 0 ? `${Math.max(server.limits.cpu / 100, 0.01)} cores` : 'Unlimited';
+    const cpuUsage = stats ? `${stats.cpuUsagePercent.toFixed(1)}%` : '—';
     const status: CardStatus = stats?.status || (server.status === 'suspended' ? 'offline' : 'loading');
     const statusLabel =
         server.isNodeUnderMaintenance
@@ -153,9 +163,10 @@ export default ({ server, className }: { server: Server; className?: string }) =
                 <ServerMetric
                     icon={faHdd}
                     label='Disk'
-                    value={stats ? `${bytesToString(stats.diskUsageInBytes)} / ${diskLimit}` : '—'}
+                    value={stats ? `${bytesToString(stats.diskUsageInBytes)} used / ${diskRemaining} free` : '—'}
                     alarm={alarms.disk}
                 />
+                <ServerMetric icon={faMicrochip} label='Cores' value={`${coreLimit} · ${cpuUsage} usage`} />
                 <ServerMetric icon={faCalendarAlt} label='Created' value={createdAt} />
             </div>
         </StatusIndicatorBox>

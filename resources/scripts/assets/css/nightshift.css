@@ -344,8 +344,33 @@ a[class*='bg-']:hover {
     color: var(--nightshift-muted) !important;
 }
 
-.nightshift-server-grid {
-    display: grid;
+  .nightshift-vps-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.5rem 0 0.85rem;
+  padding: 0 0.15rem;
+  }
+
+  .nightshift-vps-section-heading h2 {
+  margin: 0 !important;
+  color: var(--nightshift-text) !important;
+  font-size: 1.45rem !important;
+  line-height: 1.1;
+  }
+
+  .nightshift-vps-section-heading > span {
+  color: var(--nightshift-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  }
+
+  .nightshift-server-grid {
+  display: grid;
+
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
 }

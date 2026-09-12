@@ -87,11 +87,20 @@ export default () => {
                 <Pagination data={servers} onPageSelect={setPage}>
                     {({ items }) =>
                         items.length > 0 ? (
-                            <div className='nightshift-server-grid'>
-                                {items.map((server) => (
-                                    <ServerRow key={server.uuid} server={server} />
-                                ))}
-                            </div>
+                            <section aria-labelledby='nightshift-vps-heading'>
+                                <div className='nightshift-vps-section-heading'>
+                                    <div>
+                                        <p className='nightshift-dashboard-kicker'>Infrastructure</p>
+                                        <h2 id='nightshift-vps-heading'>VPS</h2>
+                                    </div>
+                                    <span>{items.length} {items.length === 1 ? 'server' : 'servers'}</span>
+                                </div>
+                                <div className='nightshift-server-grid'>
+                                    {items.map((server) => (
+                                        <ServerRow key={server.uuid} server={server} />
+                                    ))}
+                                </div>
+                            </section>
                         ) : (
                             <p css={tw`text-center text-sm text-neutral-400`}>
                                 {showOnlyAdmin
