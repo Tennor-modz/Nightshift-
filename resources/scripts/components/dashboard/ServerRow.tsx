@@ -7,7 +7,6 @@ import {
     faClock,
     faHdd,
     faMemory,
-    faMicrochip,
     faServer,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -166,7 +165,7 @@ export default ({ server, className }: { server: Server; className?: string }) =
                     value={stats ? `${bytesToString(stats.diskUsageInBytes)} used / ${diskRemaining} free` : '—'}
                     alarm={alarms.disk}
                 />
-                <ServerMetric icon={faMicrochip} label='Cores' value={`${coreLimit} · ${cpuUsage} usage`} />
+                <ServerMetric icon={faServer} label='Cores' value={`${coreLimit} · ${cpuUsage} usage`} />
                 <ServerMetric icon={faCalendarAlt} label='Created' value={createdAt} />
             </div>
         </StatusIndicatorBox>
