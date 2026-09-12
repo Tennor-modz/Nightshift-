@@ -1,0 +1,339 @@
+:root {
+    --nightshift-admin-bg: #0b1017;
+    --nightshift-admin-surface: #111820;
+    --nightshift-admin-surface-raised: #17212c;
+    --nightshift-admin-border: rgba(160, 178, 198, 0.16);
+    --nightshift-admin-text: #eef6f8;
+    --nightshift-admin-muted: #8795a5;
+    --nightshift-admin-amber: #f59e0b;
+    --nightshift-admin-orange: #f97316;
+    --nightshift-admin-amber-soft: rgba(245, 158, 11, 0.13);
+}
+
+.nightshift-admin {
+    min-height: 100vh;
+    color: var(--nightshift-admin-text);
+    background:
+        radial-gradient(circle at 78% 8%, rgba(245, 158, 11, 0.1), transparent 30rem),
+        radial-gradient(circle at 12% 90%, rgba(249, 115, 22, 0.06), transparent 28rem),
+        var(--nightshift-admin-bg);
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.nightshift-admin .main-header .logo,
+.nightshift-admin .main-header .navbar,
+.nightshift-admin .main-sidebar,
+.nightshift-admin .left-side {
+    background: rgba(13, 20, 28, 0.97) !important;
+}
+
+.nightshift-admin .main-header .logo {
+    border-bottom: 1px solid var(--nightshift-admin-border);
+    color: var(--nightshift-admin-text);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+}
+
+.nightshift-admin .main-header .logo::before {
+    content: '↯';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    margin-right: 9px;
+    border-radius: 8px;
+    color: #201304;
+    background: var(--nightshift-admin-amber);
+    box-shadow: 0 0 22px rgba(245, 158, 11, 0.28);
+    font-size: 17px;
+    letter-spacing: 0;
+}
+
+.nightshift-admin .main-header .navbar {
+    border-bottom: 1px solid var(--nightshift-admin-border);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+}
+
+.nightshift-admin .main-header .navbar .sidebar-toggle,
+.nightshift-admin .main-header .navbar .nav > li > a {
+    color: var(--nightshift-admin-muted);
+}
+
+.nightshift-admin .main-header .navbar .sidebar-toggle:hover,
+.nightshift-admin .main-header .navbar .nav > li > a:hover {
+    color: var(--nightshift-admin-amber);
+    background: var(--nightshift-admin-amber-soft);
+}
+
+.nightshift-admin .main-header .navbar .nav > li.user-menu > a {
+    color: var(--nightshift-admin-text);
+}
+
+.nightshift-admin .main-sidebar {
+    border-right: 1px solid var(--nightshift-admin-border);
+    box-shadow: 14px 0 40px rgba(0, 0, 0, 0.16);
+}
+
+.nightshift-admin .sidebar-menu > li.header {
+    padding: 18px 15px 8px;
+    color: var(--nightshift-admin-amber);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.nightshift-admin .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+    color: var(--nightshift-admin-muted);
+}
+
+.nightshift-admin .sidebar-menu > li:hover > a,
+.nightshift-admin .sidebar-menu > li.active > a {
+    border-left-color: var(--nightshift-admin-amber);
+    color: var(--nightshift-admin-text);
+    background: var(--nightshift-admin-amber-soft);
+}
+
+.nightshift-admin .sidebar-menu > li > a > .fa {
+    width: 22px;
+    color: var(--nightshift-admin-muted);
+}
+
+.nightshift-admin .sidebar-menu > li:hover > a > .fa,
+.nightshift-admin .sidebar-menu > li.active > a > .fa {
+    color: var(--nightshift-admin-amber);
+}
+
+.nightshift-admin .content-wrapper,
+.nightshift-admin .right-side {
+    background: transparent;
+}
+
+.nightshift-admin .content-header {
+    padding: 24px 30px 12px;
+}
+
+.nightshift-admin .content-header > h1 {
+    color: var(--nightshift-admin-text);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.nightshift-admin .content-header > h1 > small {
+    color: var(--nightshift-admin-muted);
+}
+
+.nightshift-admin .breadcrumb {
+    background: transparent;
+    color: var(--nightshift-admin-muted);
+}
+
+.nightshift-admin .breadcrumb > li > a,
+.nightshift-admin a {
+    color: var(--nightshift-admin-amber);
+}
+
+.nightshift-admin .content {
+    padding: 12px 30px 30px;
+}
+
+.nightshift-admin .box {
+    border: 1px solid var(--nightshift-admin-border);
+    border-radius: 12px;
+    background: rgba(17, 24, 32, 0.9);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+}
+
+.nightshift-admin .box-header {
+    border-bottom-color: var(--nightshift-admin-border);
+}
+
+.nightshift-admin .box-title {
+    color: var(--nightshift-admin-text);
+    font-weight: 600;
+}
+
+.nightshift-admin .box-body {
+    color: var(--nightshift-admin-muted);
+}
+
+.nightshift-admin .nightshift-admin-eyebrow {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--nightshift-admin-amber);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.nightshift-admin .nightshift-admin-system-box {
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(245, 158, 11, 0.12), transparent 50%),
+        rgba(17, 24, 32, 0.9);
+}
+
+.nightshift-admin .nightshift-admin-system-copy {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.nightshift-admin .nightshift-admin-status {
+    display: block;
+    margin-bottom: 10px;
+    color: #fbbf24;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.nightshift-admin .nightshift-admin-status-warning {
+    color: #fb923c;
+}
+
+.nightshift-admin code {
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 5px;
+    color: #fed7aa;
+    background: rgba(245, 158, 11, 0.09);
+}
+
+.nightshift-admin .nightshift-admin-stats-card {
+    margin-bottom: 20px;
+}
+
+.nightshift-admin .nightshift-admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.nightshift-admin .nightshift-admin-stat {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    align-items: center;
+    padding: 14px;
+    border: 1px solid var(--nightshift-admin-border);
+    border-radius: 9px;
+    background: rgba(23, 33, 44, 0.62);
+}
+
+.nightshift-admin .nightshift-admin-stat-icon {
+    grid-row: span 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    color: var(--nightshift-admin-amber);
+    background: var(--nightshift-admin-amber-soft);
+    font-size: 16px;
+}
+
+.nightshift-admin .nightshift-admin-stat-value {
+    color: var(--nightshift-admin-text);
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.nightshift-admin .nightshift-admin-stat-label {
+    margin-top: 4px;
+    color: var(--nightshift-admin-muted);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nightshift-admin .nightshift-admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nightshift-admin .nightshift-admin-actions > [class*='col-'] {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.nightshift-admin .nightshift-admin-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    border: 1px solid var(--nightshift-admin-border);
+    border-radius: 9px;
+    color: var(--nightshift-admin-text) !important;
+    font-weight: 600;
+    box-shadow: none;
+    transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+.nightshift-admin .nightshift-admin-action:hover,
+.nightshift-admin .nightshift-admin-action:focus {
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+.nightshift-admin .nightshift-admin-action small {
+    margin-left: 4px;
+    color: inherit;
+    opacity: 0.75;
+}
+
+.nightshift-admin .nightshift-admin-action-amber {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: linear-gradient(135deg, #d97706, #f97316);
+}
+
+.nightshift-admin .nightshift-admin-action-neutral {
+    background: rgba(23, 33, 44, 0.8);
+}
+
+.nightshift-admin .nightshift-admin-action-neutral:hover {
+    border-color: rgba(245, 158, 11, 0.48);
+    background: var(--nightshift-admin-amber-soft);
+}
+
+.nightshift-admin .nightshift-admin-action-green {
+    background: #166534;
+}
+
+.nightshift-admin .nightshift-admin-action-whatsapp {
+    background: #15803d;
+}
+
+.nightshift-admin .nightshift-admin-action-coffee {
+    border-color: rgba(251, 146, 60, 0.45);
+    background: #9a3412;
+}
+
+.nightshift-admin .main-footer {
+    border-top: 1px solid var(--nightshift-admin-border);
+    color: var(--nightshift-admin-muted);
+    background: rgba(13, 20, 28, 0.94);
+}
+
+.nightshift-admin .main-footer a {
+    color: var(--nightshift-admin-amber);
+}
+
+@media (max-width: 767px) {
+    .nightshift-admin .content-header,
+    .nightshift-admin .content {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .nightshift-admin .nightshift-admin-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

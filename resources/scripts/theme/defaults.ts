@@ -13,19 +13,6 @@ const tailwindNeutral = {
     900: '#171717',
 };
 
-const tailwindBlue = {
-    50: '#e7fffa',
-    100: '#c7fff1',
-    200: '#91f9df',
-    300: '#5beccc',
-    400: '#36e0b7',
-    500: '#2ce0b4',
-    600: '#20c49d',
-    700: '#159b7d',
-    800: '#10735f',
-    900: '#0b4b40',
-};
-
 const tailwindCyan = {
     50: '#e9fbff',
     100: '#c9f4fb',
@@ -95,7 +82,7 @@ export const defaultTheme: NightshiftTheme = {
     colors: {
         black: '#06110f',
         white: '#eef6f8',
-        primary: tailwindBlue,
+        primary: tailwindOrange,
         cyan: tailwindCyan,
         orange: tailwindOrange,
         red: tailwindRed,

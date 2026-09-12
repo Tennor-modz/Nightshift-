@@ -24,6 +24,10 @@ export default () => {
     const username = useStoreState((state) => state.user.data!.username);
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
     const [showOnlyAdmin, setShowOnlyAdmin] = usePersistedState(`${uuid}:show_all_servers`, false);
+    const displayName = username?.trim() || 'operator';
+    const hour = new Date().getHours();
+    const greeting =
+        hour < 5 ? 'Good night' : hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
 
     const { data: servers, error } = useSWR<PaginatedResult<Server>>(
         ['/api/client/servers', showOnlyAdmin && rootAdmin, page],
@@ -58,7 +62,9 @@ export default () => {
             <div className='nightshift-dashboard-header'>
                 <div>
                     <p className='nightshift-dashboard-kicker'>Workspace / Overview</p>
-                    <h1 className='nightshift-dashboard-title'>Good evening, {username}.</h1>
+                    <h1 className='nightshift-dashboard-title'>
+                        {greeting}, {displayName}.
+                    </h1>
                     <p className='nightshift-dashboard-copy'>Your server fleet is ready when you are.</p>
                 </div>
                 <span className='nightshift-dashboard-pulse'>System nominal</span>
