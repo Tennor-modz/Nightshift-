@@ -236,3 +236,325 @@ a[class*='bg-']:hover {
         display: none;
     }
 }
+
+.nightshift-auth-page {
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+.nightshift-auth-title {
+    color: var(--nightshift-text) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em;
+}
+
+.nightshift-auth-card {
+    border: 1px solid var(--nightshift-border) !important;
+    border-radius: 1rem !important;
+    background:
+        linear-gradient(145deg, rgba(245, 158, 11, 0.1), transparent 40%),
+        rgba(17, 24, 32, 0.96) !important;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.32) !important;
+}
+
+.nightshift-auth-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0 auto 1.75rem;
+    color: var(--nightshift-text);
+}
+
+.nightshift-auth-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.85rem;
+    color: #241504;
+    background: var(--nightshift-amber);
+    box-shadow: 0 0 28px rgba(245, 158, 11, 0.28);
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.nightshift-auth-brand strong {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: lowercase;
+}
+
+.nightshift-auth-brand span:not(.nightshift-auth-mark) {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--nightshift-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+}
+
+.nightshift-auth-fields label {
+    color: var(--nightshift-text) !important;
+}
+
+.nightshift-auth-fields input:not([type='checkbox']):not([type='radio']) {
+    border-color: var(--nightshift-border) !important;
+    border-radius: 0.65rem !important;
+    color: var(--nightshift-text) !important;
+    background: rgba(8, 13, 19, 0.72) !important;
+    box-shadow: none !important;
+}
+
+.nightshift-auth-fields input:not([type='checkbox']):not([type='radio']):focus {
+    border-color: var(--nightshift-amber) !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.14) !important;
+}
+
+.nightshift-auth-fields input::placeholder {
+    color: var(--nightshift-muted);
+}
+
+.nightshift-auth-fields button[type='submit'] {
+    border-color: #d97706 !important;
+    border-radius: 0.65rem !important;
+    color: #241504 !important;
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+    font-weight: 700;
+}
+
+.nightshift-auth-fields button[type='submit']:hover:not(:disabled) {
+    border-color: #ea580c !important;
+    background: linear-gradient(135deg, #fbbf24, #fb923c) !important;
+}
+
+.nightshift-auth-fields .input-help {
+    color: var(--nightshift-muted) !important;
+}
+
+.nightshift-auth-fields .input-help.error {
+    color: #fca5a5 !important;
+}
+
+.nightshift-auth-footer {
+    color: var(--nightshift-muted) !important;
+}
+
+.nightshift-server-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.nightshift-server-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.nightshift-server-card-identity,
+.nightshift-server-card-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nightshift-server-card-identity {
+    min-width: 0;
+    gap: 0.75rem;
+}
+
+.nightshift-server-card-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    color: var(--nightshift-amber);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.nightshift-server-card-name,
+.nightshift-server-card-node,
+.nightshift-server-card-description {
+    overflow: hidden;
+    margin: 0 !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nightshift-server-card-name {
+    color: var(--nightshift-text) !important;
+    font-size: 1.05rem !important;
+    font-weight: 600;
+}
+
+.nightshift-server-card-node {
+    margin-top: 0.2rem !important;
+    color: var(--nightshift-muted) !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.nightshift-server-card-actions {
+    flex: 0 0 auto;
+    gap: 0.55rem;
+}
+
+.nightshift-server-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--nightshift-muted);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nightshift-server-status-dot {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 0.18rem rgba(135, 149, 165, 0.12);
+}
+
+.nightshift-server-status-running {
+    color: #4ade80;
+}
+
+.nightshift-server-status-running .nightshift-server-status-dot {
+    box-shadow: 0 0 0 0.18rem rgba(74, 222, 128, 0.13);
+}
+
+.nightshift-server-status-offline {
+    color: #f87171;
+}
+
+.nightshift-server-status-offline .nightshift-server-status-dot {
+    box-shadow: 0 0 0 0.18rem rgba(248, 113, 113, 0.13);
+}
+
+.nightshift-server-status-pending {
+    color: var(--nightshift-amber);
+}
+
+.nightshift-server-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(245, 158, 11, 0.32);
+    border-radius: 0.55rem;
+    color: var(--nightshift-amber) !important;
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.nightshift-server-open:hover,
+.nightshift-server-open:focus {
+    border-color: var(--nightshift-amber);
+    color: #241504 !important;
+    background: var(--nightshift-amber);
+}
+
+.nightshift-server-card-description {
+    margin-top: 0.8rem !important;
+    color: var(--nightshift-muted) !important;
+    font-size: 0.75rem !important;
+}
+
+.nightshift-server-card-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+.nightshift-server-metric {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem;
+    border: 1px solid rgba(160, 178, 198, 0.1);
+    border-radius: 0.55rem;
+    background: rgba(8, 13, 19, 0.3);
+}
+
+.nightshift-server-metric > svg {
+    flex: 0 0 auto;
+    color: var(--nightshift-amber);
+    font-size: 0.75rem;
+}
+
+.nightshift-server-metric > div {
+    min-width: 0;
+}
+
+.nightshift-server-metric span,
+.nightshift-server-metric strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nightshift-server-metric span {
+    color: var(--nightshift-muted);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nightshift-server-metric strong {
+    margin-top: 0.12rem;
+    color: var(--nightshift-text);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.nightshift-server-metric-alarm > svg,
+.nightshift-server-metric-alarm strong {
+    color: #f87171;
+}
+
+@media (max-width: 640px) {
+    .nightshift-auth-page {
+        padding-top: 1.5rem !important;
+    }
+
+    .nightshift-auth-card {
+        padding: 1.15rem !important;
+    }
+
+    .nightshift-server-grid {
+        gap: 0.7rem;
+    }
+
+    .nightshift-server-card-header {
+        display: block;
+    }
+
+    .nightshift-server-card-actions {
+        justify-content: space-between;
+        margin-top: 0.75rem;
+    }
+
+    .nightshift-server-card-stats {
+        gap: 0.4rem;
+    }
+
+    .nightshift-server-metric {
+        padding: 0.45rem;
+    }
+}

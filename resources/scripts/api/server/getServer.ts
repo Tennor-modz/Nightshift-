@@ -33,6 +33,7 @@ export interface Server {
     __deprecatedUuidShort: string;
     uuid: string;
     name: string;
+    createdAt: Date;
     node: string;
     isNodeUnderMaintenance: boolean;
     status: ServerStatus;
@@ -70,6 +71,7 @@ export const rawDataToServerObject = ({ attributes: data }: FractalResponseData)
     __deprecatedUuidShort: data.__deprecated_uuid_short,
     uuid: data.uuid,
     name: data.name,
+    createdAt: new Date(data.created_at),
     node: data.node,
     isNodeUnderMaintenance: data.is_node_under_maintenance,
     status: data.status,
