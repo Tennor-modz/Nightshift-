@@ -28,7 +28,7 @@ const Container = styled.div`
     `};
 `;
 
-const LoginFormContainer = forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => (
+export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => (
     <Container>
         {title && (
             <h2 className='nightshift-auth-title' css={tw`text-3xl text-center text-neutral-100 font-medium py-4`}>
@@ -37,8 +37,8 @@ const LoginFormContainer = forwardRef<HTMLFormElement, Props>(({ title, ...props
         )}
         <FlashMessageRender css={tw`mb-2 px-1`} />
         <Form {...props} ref={ref}>
-            <div className='nightshift-auth-card' css={tw`md:flex w-full shadow-lg rounded-lg p-6 md:pl-0 mx-1`}>
-                <div className='nightshift-auth-brand flex-none select-none mb-6 md:mb-0 self-center'>
+            <div className='nightshift-auth-card' css={tw`w-full shadow-lg rounded-lg p-6 mx-1`}>
+                <div className='nightshift-auth-brand'>
                     <span className='nightshift-auth-mark' aria-hidden='true'>
                         ↯
                     </span>
@@ -47,7 +47,7 @@ const LoginFormContainer = forwardRef<HTMLFormElement, Props>(({ title, ...props
                         <span>SERVER COMMAND</span>
                     </div>
                 </div>
-                <div className='nightshift-auth-fields flex-1'>{props.children}</div>
+                <div className='nightshift-auth-fields'>{props.children}</div>
             </div>
         </Form>
         <p className='nightshift-auth-footer' css={tw`text-center text-neutral-500 text-xs mt-4`}>
@@ -55,7 +55,3 @@ const LoginFormContainer = forwardRef<HTMLFormElement, Props>(({ title, ...props
         </p>
     </Container>
 ));
-
-LoginFormContainer.displayName = 'LoginFormContainer';
-
-export default LoginFormContainer;
