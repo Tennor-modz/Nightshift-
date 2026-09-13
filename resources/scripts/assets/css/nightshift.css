@@ -344,6 +344,140 @@ a[class*='bg-']:hover {
     color: var(--nightshift-muted) !important;
 }
 
+.nightshift-vps-overview {
+    margin-bottom: 1rem;
+    padding: 1.1rem;
+    border: 1px solid var(--nightshift-border);
+    border-radius: 0.85rem;
+    background:
+        linear-gradient(135deg, rgba(245, 158, 11, 0.08), transparent 38%),
+        rgba(17, 24, 32, 0.86);
+}
+
+.nightshift-vps-overview-header,
+.nightshift-vps-host-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nightshift-vps-overview-title {
+    margin: 0.2rem 0 0 !important;
+    color: var(--nightshift-text) !important;
+    font-size: 1.25rem !important;
+    font-weight: 600;
+}
+
+.nightshift-vps-overview-copy {
+    margin: 0.3rem 0 0 !important;
+    color: var(--nightshift-muted) !important;
+    font-size: 0.75rem !important;
+}
+
+.nightshift-vps-overview-badge,
+.nightshift-vps-host-heading > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 0 0 auto;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 0.5rem;
+    color: var(--nightshift-amber);
+    background: rgba(245, 158, 11, 0.08);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.nightshift-vps-metrics,
+.nightshift-vps-host-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.nightshift-vps-metric {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.7rem;
+    border: 1px solid rgba(160, 178, 198, 0.12);
+    border-radius: 0.65rem;
+    background: rgba(8, 13, 19, 0.36);
+}
+
+.nightshift-vps-metric-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.55rem;
+    color: var(--nightshift-amber);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.nightshift-vps-metric > div {
+    min-width: 0;
+}
+
+.nightshift-vps-metric-label,
+.nightshift-vps-metric strong,
+.nightshift-vps-metric small {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nightshift-vps-metric-label {
+    color: var(--nightshift-muted);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nightshift-vps-metric strong {
+    margin-top: 0.16rem;
+    color: var(--nightshift-text);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.nightshift-vps-metric small {
+    margin-top: 0.12rem;
+    color: var(--nightshift-muted);
+    font-size: 0.6rem;
+}
+
+.nightshift-vps-host {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--nightshift-border);
+}
+
+.nightshift-vps-host-kicker {
+    margin: 0 !important;
+    color: var(--nightshift-amber) !important;
+    font-size: 0.62rem !important;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.nightshift-vps-host-heading h3 {
+    margin: 0.2rem 0 0 !important;
+    color: var(--nightshift-text) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600;
+}
+
 .nightshift-server-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -535,6 +669,31 @@ a[class*='bg-']:hover {
 
     .nightshift-auth-card {
         padding: 1.15rem !important;
+    }
+
+    .nightshift-vps-overview {
+        padding: 0.8rem;
+    }
+
+    .nightshift-vps-overview-header,
+    .nightshift-vps-host-heading {
+        display: block;
+    }
+
+    .nightshift-vps-overview-badge,
+    .nightshift-vps-host-heading > span {
+        margin-top: 0.75rem;
+    }
+
+    .nightshift-vps-metrics,
+    .nightshift-vps-host-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
+    }
+
+    .nightshift-vps-metric {
+        gap: 0.45rem;
+        padding: 0.5rem;
     }
 
     .nightshift-server-grid {

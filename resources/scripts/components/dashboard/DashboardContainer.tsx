@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Server } from '@/api/server/getServer';
 import getServers from '@/api/getServers';
 import ServerRow from '@/components/dashboard/ServerRow';
+import VpsOverview from '@/components/dashboard/VpsOverview';
 import Spinner from '@/components/elements/Spinner';
 import PageContentBlock from '@/components/elements/PageContentBlock';
 import useFlash from '@/plugins/useFlash';
@@ -87,11 +88,14 @@ export default () => {
                 <Pagination data={servers} onPageSelect={setPage}>
                     {({ items }) =>
                         items.length > 0 ? (
-                            <div className='nightshift-server-grid'>
-                                {items.map((server) => (
-                                    <ServerRow key={server.uuid} server={server} />
-                                ))}
-                            </div>
+                            <>
+                                <VpsOverview servers={items} showHostStats={rootAdmin} />
+                                <div className='nightshift-server-grid'>
+                                    {items.map((server) => (
+                                        <ServerRow key={server.uuid} server={server} />
+                                    ))}
+                                </div>
+                            </>
                         ) : (
                             <p css={tw`text-center text-sm text-neutral-400`}>
                                 {showOnlyAdmin
