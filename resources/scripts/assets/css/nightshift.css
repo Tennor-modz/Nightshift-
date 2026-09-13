@@ -31,6 +31,14 @@ body {
     backdrop-filter: blur(16px);
 }
 
+.nightshift-vps-menu-button {
+    display: inline !important;
+    margin-left: 1rem;
+    cursor: pointer;
+    color: var(--nightshift-amber);
+    font-size: 1.25rem;
+}
+
 #logo a {
     display: inline-flex;
     align-items: baseline;

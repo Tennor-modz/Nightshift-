@@ -139,7 +139,7 @@ export default ({ servers, showHostStats }: Props) => {
                         <VpsMetric
                             icon={faMicrochip}
                             label='Host cores'
-                            value={hostStats?.cpu_cores ? `${hostStats.cpu_cores} cores` : 'Unavailable'}
+                            value={hostStats?.cpu_cores ? `${hostStats.cpu_cores} cores` : '—'}
                             detail='Across online nodes'
                         />
                         <VpsMetric
@@ -151,8 +151,14 @@ export default ({ servers, showHostStats }: Props) => {
                         <VpsMetric
                             icon={faClock}
                             label='Host uptime'
-                            value={hostStats?.uptime ? formatUptime(hostStats.uptime) : 'Unavailable'}
-                            detail='Reported by Wings'
+                            value={
+                                hostStats?.uptime
+                                    ? formatUptime(hostStats.uptime)
+                                    : hostStats?.online_nodes
+                                    ? 'Online'
+                                    : '—'
+                            }
+                            detail={hostStats?.uptime ? 'Reported by Wings' : 'Wings uptime not exposed'}
                         />
                     </div>
                 </div>

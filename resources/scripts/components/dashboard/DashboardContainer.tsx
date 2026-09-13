@@ -25,6 +25,7 @@ export default () => {
     const username = useStoreState((state) => state.user.data!.username);
     const rootAdmin = useStoreState((state) => state.user.data!.rootAdmin);
     const [showOnlyAdmin, setShowOnlyAdmin] = usePersistedState(`${uuid}:show_all_servers`, false);
+    const [showVpsOverview, setShowVpsOverview] = useState(false);
     const displayName = username?.trim() || 'operator';
     const hour = new Date().getHours();
     const greeting =
@@ -58,6 +59,13 @@ export default () => {
         if (!error) clearFlashes('dashboard');
     }, [error]);
 
+    useEffect(() => {
+        const toggleVpsOverview = () => setShowVpsOverview((visible) => !visible);
+        window.addEventListener('nightshift:toggle-vps', toggleVpsOverview);
+
+        return () => window.removeEventListener('nightshift:toggle-vps', toggleVpsOverview);
+    }, []);
+
     return (
         <PageContentBlock className='content-dashboard' title={'Dashboard'} showFlashKey={'dashboard'}>
             <div className='nightshift-dashboard-header'>
@@ -89,7 +97,7 @@ export default () => {
                     {({ items }) =>
                         items.length > 0 ? (
                             <>
-                                <VpsOverview servers={items} showHostStats={rootAdmin} />
+                                {showVpsOverview && <VpsOverview servers={items} showHostStats={rootAdmin} />}
                                 <div className='nightshift-server-grid'>
                                     {items.map((server) => (
                                         <ServerRow key={server.uuid} server={server} />

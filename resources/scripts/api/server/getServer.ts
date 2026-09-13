@@ -71,7 +71,7 @@ export const rawDataToServerObject = ({ attributes: data }: FractalResponseData)
     __deprecatedUuidShort: data.__deprecated_uuid_short,
     uuid: data.uuid,
     name: data.name,
-    createdAt: new Date(data.created_at),
+    createdAt: data.created_at || data.createdAt ? new Date(data.created_at || data.createdAt) : new Date(NaN),
     node: data.node,
     isNodeUnderMaintenance: data.is_node_under_maintenance,
     status: data.status,

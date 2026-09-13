@@ -32,20 +32,13 @@ const RightNavigation = styled.div`
     }
 `;
 
-const onTriggerNavButton = () => {
-    const sidebar = document.getElementById('sidebar');
-
-    if (sidebar) {
-        sidebar.classList.toggle('active-nav');
-    }
-};
-
 export default () => {
     const name = useStoreState((state: ApplicationStore) => state.settings.data!.name);
     const rootAdmin = useStoreState((state: ApplicationStore) => state.user.data!.rootAdmin);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
     const location = useLocation();
     const [showSidebar, setShowSidebar] = useState(false);
+    const isDashboard = location.pathname === '/';
 
     useEffect(() => {
         if (location.pathname.startsWith('/server') || location.pathname.startsWith('/account')) {
@@ -54,6 +47,23 @@ export default () => {
         }
         setShowSidebar(false);
     }, [location.pathname]);
+
+    const onTriggerNavButton = () => {
+        if (isDashboard) {
+            window.dispatchEvent(new Event('nightshift:toggle-vps'));
+            return;
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) sidebar.classList.toggle('active-nav');
+    };
+
+    const onNavButtonKeyDown = (event: React.KeyboardEvent<SVGSVGElement>) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            onTriggerNavButton();
+        }
+    };
 
     const onTriggerLogout = () => {
         setIsLoggingOut(true);
@@ -67,11 +77,16 @@ export default () => {
         <div className={'bg-neutral-700 shadow-md overflow-x-auto topbar'}>
             <SpinnerOverlay visible={isLoggingOut} />
             <div className={'mx-auto w-full flex items-center h-[3.5rem] max-w-[1200px]'}>
-                {showSidebar && (
+                {(showSidebar || isDashboard) && (
                     <FontAwesomeIcon
                         icon={faBars}
-                        className='navbar-button'
+                        className={`navbar-button${isDashboard ? ' nightshift-vps-menu-button' : ''}`}
                         onClick={onTriggerNavButton}
+                        onKeyDown={onNavButtonKeyDown}
+                        role='button'
+                        tabIndex={0}
+                        title={isDashboard ? 'Toggle VPS overview' : 'Toggle navigation'}
+                        aria-label={isDashboard ? 'Toggle VPS overview' : 'Toggle navigation'}
                     ></FontAwesomeIcon>
                 )}
 

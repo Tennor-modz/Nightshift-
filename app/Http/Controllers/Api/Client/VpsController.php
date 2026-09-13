@@ -41,11 +41,18 @@ class VpsController extends Controller
                 $diskCapacity = (int) $node->disk * 1024 * 1024;
                 $memoryCapacity = (int) Arr::get($system, 'system.memory_bytes', 0);
 
+                $cpuCores = (int) (
+                    Arr::get($system, 'cpu_count')
+                    ?: Arr::get($system, 'cpu_threads')
+                    ?: Arr::get($system, 'system.cpu_count')
+                    ?: Arr::get($system, 'system.cpu_threads')
+                );
+
                 return [
                     'name' => $node->name,
                     'memory_bytes' => $memoryCapacity,
                     'memory_allocated_bytes' => $allocatedMemory,
-                    'cpu_cores' => (int) Arr::get($system, 'cpu_count', Arr::get($system, 'system.cpu_count', 0)),
+                    'cpu_cores' => $cpuCores,
                     'disk_bytes' => $diskCapacity,
                     'disk_allocated_bytes' => $allocatedDisk,
                     'uptime' => (int) Arr::get($system, 'uptime', Arr::get($system, 'system.uptime', 0)),
