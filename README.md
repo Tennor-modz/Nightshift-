@@ -1,7 +1,7 @@
 # Nightshift Pterodactyl Theme
 
 Nightshift is a dark, responsive Pterodactyl Panel theme fork for Panel
-version 1.15.1. It keeps the existing panel, server management, console,
+version 1.15.2. It keeps the existing panel, server management, console,
 authentication, and the existing sidebar functionality while applying
 the Nightshift command-center visual system.
 
