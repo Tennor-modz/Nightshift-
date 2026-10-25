@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Features, Help, or Questions
+    url: https://github.com/orgs/pterodactyl/discussions/categories/feature-requests
+    about: The preferred method for getting help with Pterodactyl or seeking new features for the software.
+  - name: Discord
+    url: https://discord.gg/pterodactyl
+    about: For quicker support with installations issues or running ideas by the community.

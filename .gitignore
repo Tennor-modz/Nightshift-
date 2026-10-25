@@ -9,8 +9,37 @@ __v0_jsx-dev-runtime.ts
 
 # Environment variables
 .env*.local
+.env*
+!.env.ci
+!.env.example
 
 # Common ignores
 node_modules
 .next/
 .DS_Store
+*.DS_Store*
+*.log
+
+# Pterodactyl / Laravel
+/vendor
+.vagrant/*
+.vscode/*
+storage/framework/*
+/.direnv
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+.yarn
+public/assets/manifest.json
+misc
+.php-cs-fixer.cache
+coverage.xml
+resources/lang/locales.js
+.phpunit.result.cache
+/public/build
+/public/hot
+result
+docker-compose.*
+!docker-compose.example.yml
+!docker-compose.example.yaml
+release
